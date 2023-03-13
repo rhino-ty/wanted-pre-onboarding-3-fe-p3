@@ -32,6 +32,13 @@ export const getCurrentUserInfo = async (): Promise<User | null> => {
   // TODO 3-2: GET, '/profile' 호출
   // 호출 성공시 유저 정보 반환
   // 마찬가지로 사용하는 기술에 맞추어 적절히 withCredential 설정하기
+  const userInfoRes = await fetch(`${BASE_URL}/profile`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      credentials: "include",
+    },
+  });
 
-  return null;
+  return userInfoRes ? userInfoRes.json() : null;
 };
